@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/search_icon"
+        android:title="@string/action_search"
+        android:icon="@drawable/ic_search_white_24dp"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/type_sentence"
+        android:title="Type a sentence"
+        android:icon="@drawable/ic_title_black_24dp"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/sort_list"
+        android:title="@string/sort_list"
+        android:icon="@drawable/ic_sort_by_alpha_white_24dp"
+        app:showAsAction="always"/>
+</menu>
