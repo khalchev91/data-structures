@@ -1,24 +1,16 @@
 package com.khalincheverria.mydictionary.Adapter;
 
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.khalincheverria.mydictionary.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by Khalin Cheverria 1501396
- * Chrysannae Mason 1503793
- * Lorenzo Buchanan 1504084
- *
- * on 3/14/2017.
- */
+
 public class InvalidWordsAdapater  extends RecyclerView.Adapter<InvalidWordsAdapater.ViewHolder>{
     private ArrayList<String>list;
     private static RecyclerViewClickListener listener;

@@ -13,13 +13,7 @@ import com.khalincheverria.mydictionary.Model.Word;
 import com.khalincheverria.mydictionary.R;
 import com.khalincheverria.mydictionary.ViewWord;
 
-/**
- * Created by Khalin Cheverria 1501396
- * Chrysannae Mason 1503793
- * Lorenzo Buchanan 1504084
- *
- * on 3/14/2017.
- */
+
 
 public class BinaryTreeAdapter extends RecyclerView.Adapter<BinaryTreeAdapter.ViewHolder> {
 private BinaryTree wordTree;

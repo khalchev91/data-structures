@@ -1,12 +1,5 @@
 package com.khalincheverria.mydictionary;
 
-/*
- * Created by Khalin Cheverria 1501396
- * Chrysannae Mason 1503793
- * Lorenzo Buchanan 1504084
- *
- * on 3/14/2017.
- */
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;

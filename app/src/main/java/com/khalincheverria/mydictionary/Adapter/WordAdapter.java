@@ -14,13 +14,7 @@ import com.khalincheverria.mydictionary.Model.Word;
 import com.khalincheverria.mydictionary.ViewWord;
 import com.khalincheverria.mydictionary.R;
 
-/**
- * Created by Khalin Cheverria 1501396
- * Chrysannae Mason 1503793
- * Lorenzo Buchanan 1504084
- *
- * on 3/14/2017.
- */
+
 
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 private LinkedList wordList;

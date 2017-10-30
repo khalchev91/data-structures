@@ -4,14 +4,6 @@ import com.khalincheverria.mydictionary.Model.Word;
 
 import java.io.Serializable;
 
-/*
- * Created by Khalin Cheverria 1501396
- * Chrysannae Mason 1503793
- * Lorenzo Buchanan 1504084
- *
- * on 3/14/2017.
- */
-
 public class TreeNode implements Serializable {
     private TreeNode left,right;
     private Word word;
