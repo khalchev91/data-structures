@@ -1,7 +1,7 @@
 package com.khalincheverria.mydictionary.BinaryTree;
 
 
-import com.khalincheverria.mydictionary.Model.Word;
+import com.khalincheverria.mydictionary.Model.Contact;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ import java.io.Serializable;
 @SuppressWarnings("ConstantConditions")
 public class BinaryTree implements Serializable {
     private TreeNode root;
-    private Word word;
+    private Contact contact;
     boolean check=false;
    public int count;
 
@@ -22,8 +22,8 @@ public class BinaryTree implements Serializable {
         return count;
     }
 
-    public void setWord(Word word) {
-        this.word = word;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public void setCheck(boolean check) {
@@ -46,8 +46,8 @@ public class BinaryTree implements Serializable {
 
 
 
-    public void insert(Word word){
-        TreeNode treeNode=new TreeNode(word);
+    public void insert(Contact contact){
+        TreeNode treeNode=new TreeNode(contact);
         TreeNode node;
         if(treeNode!=null){
             if(root==null){
@@ -55,15 +55,15 @@ public class BinaryTree implements Serializable {
             }else {
                 node=root;
                 while (true){
-                    if(treeNode.getWord().getWord().equalsIgnoreCase(node.getWord().getWord())) {
-                        word.setDefinition(node.getWord().getDefinition()+"\n"+"\n"+word.getDefinition());
-                        if (!(word.getPartOfSpeech().trim().compareToIgnoreCase(node.getWord().getPartOfSpeech().trim())==0)) {
-                            word.setPartOfSpeech(word.getPartOfSpeech()+"\t"+"\t"+node.getWord().getPartOfSpeech());
+                    if(treeNode.getContact().getWord().equalsIgnoreCase(node.getContact().getWord())) {
+                        contact.setDefinition(node.getContact().getDefinition()+"\n"+"\n"+ contact.getDefinition());
+                        if (!(contact.getPartOfSpeech().trim().compareToIgnoreCase(node.getContact().getPartOfSpeech().trim())==0)) {
+                            contact.setPartOfSpeech(contact.getPartOfSpeech()+"\t"+"\t"+node.getContact().getPartOfSpeech());
                         }
-                        node.setWord(word);
+                        node.setContact(contact);
                         return;
                     }
-                    if(treeNode.getWord().getWord().compareToIgnoreCase(node.getWord().getWord())<0){
+                    if(treeNode.getContact().getWord().compareToIgnoreCase(node.getContact().getWord())<0){
                         if(node.getLeft()==null){
                             node.setLeft(treeNode);
                             break;
@@ -89,7 +89,7 @@ public class BinaryTree implements Serializable {
     private void inOrder(TreeNode node){
         if(node!=null){
             inOrder(node.getLeft());
-            System.out.println(node.getWord());
+            System.out.println(node.getContact());
             inOrder(node.getRight());
         }
     }
@@ -119,25 +119,25 @@ public class BinaryTree implements Serializable {
         }
         inOrderTraverseTree(root.getLeft(),index,counter);
         if (counter.count == index) {
-            setWord(root.getWord());
+            setContact(root.getContact());
         }
         counter.count = counter.count + 1;
         inOrderTraverseTree(root.getRight(),index,counter);
 
     }
-    public Word get(int index){
+    public Contact get(int index){
         inOrderTraverseTree(root,index,new Counter());
-        return word;
+        return contact;
     }
 
 public boolean contains(String key){
 
   TreeNode node= root;
     while (node!=null) {
-        if(key.trim().equalsIgnoreCase(node.getWord().getWord())){
+        if(key.trim().equalsIgnoreCase(node.getContact().getWord())){
             return true;
         }
-        if (key.compareToIgnoreCase(node.getWord().getWord()) < 0) {
+        if (key.compareToIgnoreCase(node.getContact().getWord()) < 0) {
             node = node.getLeft();
         } else {
             node = node.getRight();
@@ -149,13 +149,13 @@ public boolean contains(String key){
 
 
 
-    public Word searchWord(String word) {
+    public Contact searchWord(String word) {
         TreeNode current = root;
         count=0;
         while (current != null) {
-            if (word.compareToIgnoreCase(current.getWord().getWord()) == 0) {
-                return current.getWord();
-            } else if (word.compareToIgnoreCase(current.getWord().getWord()) < 0) {
+            if (word.compareToIgnoreCase(current.getContact().getWord()) == 0) {
+                return current.getContact();
+            } else if (word.compareToIgnoreCase(current.getContact().getWord()) < 0) {
                 current = current.getLeft();
             } else {
                 current = current.getRight();

@@ -1,7 +1,7 @@
 package com.khalincheverria.mydictionary.LinkedList;
 
 
-import com.khalincheverria.mydictionary.Model.Word;
+import com.khalincheverria.mydictionary.Model.Contact;
 
 import java.io.Serializable;
 
@@ -53,20 +53,20 @@ public class LinkedList implements Serializable{
             }
         }
 
-    public void insert(Word word){
-        Node temp1 = new Node(word);
+    public void insert(Contact contact){
+        Node temp1 = new Node(contact);
         Node temp2;
         temp2=head;
         if(head==null){
             head = temp1;
         }else{
             while(temp2.getNext()!=null ){
-                if(temp2.getData().getWord().compareToIgnoreCase(word.getWord())==0){
-                    word.setDefinition(word.getDefinition()+"\n"+"\n"+temp2.getData().getDefinition());
-                    if((word.getPartOfSpeech().compareToIgnoreCase(temp2.getData().getPartOfSpeech())!=0)) {
-                        word.setPartOfSpeech(word.getPartOfSpeech()+"\t"+"\t"+temp2.getData().getPartOfSpeech());
+                if(temp2.getData().getWord().compareToIgnoreCase(contact.getWord())==0){
+                    contact.setDefinition(contact.getDefinition()+"\n"+"\n"+temp2.getData().getDefinition());
+                    if((contact.getPartOfSpeech().compareToIgnoreCase(temp2.getData().getPartOfSpeech())!=0)) {
+                        contact.setPartOfSpeech(contact.getPartOfSpeech()+"\t"+"\t"+temp2.getData().getPartOfSpeech());
                     }
-                    temp2.setData(word);
+                    temp2.setData(contact);
                     return;
                 }
                 temp2 = temp2.getNext();
@@ -88,34 +88,34 @@ public boolean contains(String word){
             return false;
 }
 
-    public void addWord(Word word){
-        Node node=new Node(word);
+    public void addWord(Contact contact){
+        Node node=new Node(contact);
         if(head==null){
             head=node;
-        }else if(head.getData().getWord().compareToIgnoreCase(word.getWord())==0){
-            word.setDefinition(word.getDefinition()+"\n"+head.getData().getDefinition());
-            if(!word.getPartOfSpeech().trim().equals(head.getData().getPartOfSpeech().trim())) {
-                word.setPartOfSpeech(word.getPartOfSpeech()+"\n"+head.getData().getPartOfSpeech());
+        }else if(head.getData().getWord().compareToIgnoreCase(contact.getWord())==0){
+            contact.setDefinition(contact.getDefinition()+"\n"+head.getData().getDefinition());
+            if(!contact.getPartOfSpeech().trim().equals(head.getData().getPartOfSpeech().trim())) {
+                contact.setPartOfSpeech(contact.getPartOfSpeech()+"\n"+head.getData().getPartOfSpeech());
             }
-            head.setData(word);
+            head.setData(contact);
             return;
         }
-        else if(word.getWord().compareTo(head.getData().getWord())<0){
+        else if(contact.getWord().compareTo(head.getData().getWord())<0){
             node.setNext(head);
             head=node;
         }else {
             Node before=head;
             Node after= head.getNext();
             while (after!=null){
-                if (before.getData().getWord().compareToIgnoreCase(word.getWord())==0){
-                    word.setDefinition(before.getData().getDefinition()+"\n"+"\n"+word.getDefinition());
-                    if(!(word.getPartOfSpeech().trim().compareToIgnoreCase(before.getData().getPartOfSpeech().trim())==0)) {
-                        word.setPartOfSpeech(before.getData().getPartOfSpeech()+"\t"+"\t"+word.getPartOfSpeech());
+                if (before.getData().getWord().compareToIgnoreCase(contact.getWord())==0){
+                    contact.setDefinition(before.getData().getDefinition()+"\n"+"\n"+ contact.getDefinition());
+                    if(!(contact.getPartOfSpeech().trim().compareToIgnoreCase(before.getData().getPartOfSpeech().trim())==0)) {
+                        contact.setPartOfSpeech(before.getData().getPartOfSpeech()+"\t"+"\t"+ contact.getPartOfSpeech());
                     }
-                    before.setData(word);
+                    before.setData(contact);
                     return;
                 }
-                if(word.getWord().compareTo(after.getData().getWord())<0){
+                if(contact.getWord().compareTo(after.getData().getWord())<0){
                     break;
                 }
                 before=after;
@@ -127,17 +127,17 @@ public boolean contains(String word){
     }
 
 
-        public Word retrieve(String searchWord){
+        public Contact retrieve(String searchWord){
             Node temp;
-            Word word =null;
+            Contact contact =null;
             int count=0;
             temp=head;
             if(!isEmpty()){
                 while (temp!=null){
                     if(temp.getData().getWord().compareToIgnoreCase(searchWord)==0){
-                        word=temp.getData();
+                        contact =temp.getData();
                         setCount(count);
-                        return word;
+                        return contact;
                     }
                     temp=temp.getNext();
                     count++;
@@ -146,7 +146,7 @@ public boolean contains(String word){
                 System.out.println("list is empty");
             }
             count=-1;
-            return word;
+            return contact;
         }
         public void display() {
             Node temp = head;
@@ -160,37 +160,37 @@ public boolean contains(String word){
             }
         }
 
-    private Word[] convertList(LinkedList linkedList, int size){
+    private Contact[] convertList(LinkedList linkedList, int size){
         int count = 0, i;
-        Word[] words = new Word[size];
+        Contact[] contacts = new Contact[size];
         Node temp = head;
 
         while(temp!=null){
             for(i=count;i<size;i++){
-                words[count] = temp.getData();
+                contacts[count] = temp.getData();
             }
             temp = temp.getNext();
             count++;
         }
-        return words;
+        return contacts;
     }
 
-    private Word[] sortList(Word[] sortedWords, int size){
+    private Contact[] sortList(Contact[] sortedContacts, int size){
         int i, j;
-        Word tmp = new Word();
+        Contact tmp = new Contact();
         for(i=0;i<size;i++){
             for(j=i+1;j<size;j++){
-                if(sortedWords[i].getWord().compareTo(sortedWords[j].getWord())>0){
-                    tmp = sortedWords[i];
-                    sortedWords[i] = sortedWords[j];
-                    sortedWords[j] = tmp;
+                if(sortedContacts[i].getWord().compareTo(sortedContacts[j].getWord())>0){
+                    tmp = sortedContacts[i];
+                    sortedContacts[i] = sortedContacts[j];
+                    sortedContacts[j] = tmp;
                 }
             }
         }
-        return sortedWords;
+        return sortedContacts;
     }
 
-    private void arrayToList(Word[] w1, int size){
+    private void arrayToList(Contact[] w1, int size){
         int i;
 
         for(i=0;i<size;i++){
@@ -221,16 +221,16 @@ public boolean contains(String word){
 
     public void sortList(LinkedList n1){
         int size = getSizeOfList();
-        Word[] arr = null;
+        Contact[] arr = null;
         arr = convertList(n1, size);
         arr = sortList(arr, size);
         deleteList(n1);
         arrayToList(arr, size);
     }
 
-public Word get(int index){
+public Contact get(int index){
 int count=0;
-    Word word= new Word();
+    Contact contact = new Contact();
 
     if(head!=null) {
         Node temp=head;
@@ -238,12 +238,12 @@ int count=0;
             temp = temp.getNext();
             count++;
         }
-        word=temp.getData();
+        contact =temp.getData();
     }else {
         System.out.println("List is empty");
     }
 
-    return word;
+    return contact;
     }
 
 

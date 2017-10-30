@@ -3,24 +3,24 @@ package com.khalincheverria.mydictionary.Model;
 import java.io.Serializable;
 
 
-    public class Word implements Serializable {
+    public class Contact implements Serializable {
 
         private String word;
         private String definition;
         private String partOfSpeech;
 
-        public Word(String w, String d, String ps){
+        public Contact(String w, String d, String ps){
             setWord(w);
             setDefinition(d);
             setPartOfSpeech(ps);
         }
 
-        public Word(){
+        public Contact(){
             this("", "", "");
         }
 
-        public Word (Word word){
-            this(word.getWord(), word.getDefinition(), word.getPartOfSpeech());
+        public Contact(Contact contact){
+            this(contact.getWord(), contact.getDefinition(), contact.getPartOfSpeech());
         }
 
         public String getWord() {
@@ -45,7 +45,7 @@ import java.io.Serializable;
         public String toString(){
             String out = "";
 
-            out += "Word:" + getWord() + "\n";
+            out += "Contact:" + getWord() + "\n";
             out += "Definition:" + getDefinition() + "\n";
             out += "Part of Speech" + getPartOfSpeech() + "\n";
             return out;

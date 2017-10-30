@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.khalincheverria.mydictionary.Model.Word;
+import com.khalincheverria.mydictionary.Model.Contact;
 import com.khalincheverria.mydictionary.R;
 
 /*
@@ -40,15 +40,15 @@ public class SearchFragment extends Fragment {
 
         TextView position=(TextView)view.findViewById(R.id.position_found);
         TextView timeTaken=(TextView)view.findViewById(R.id.time_taken);
-        Word word;
+        Contact contact;
         if(isTree){
-            word=(Word)bundle.getSerializable("Words");
+            contact =(Contact)bundle.getSerializable("Words");
             double time=bundle.getDouble("time");
             int count=bundle.getInt("position");
 
-            nameOfWord.setText(word.getWord());
-            partOfSpeech.setText(word.getPartOfSpeech());
-            definition.setText(word.getDefinition());
+            nameOfWord.setText(contact.getWord());
+            partOfSpeech.setText(contact.getPartOfSpeech());
+            definition.setText(contact.getDefinition());
 
             System.out.println(time);
 
@@ -57,13 +57,13 @@ public class SearchFragment extends Fragment {
             position.setText(Integer.toString(count));
 
         }else {
-            word=(Word) bundle.getSerializable("Words");
+            contact =(Contact) bundle.getSerializable("Words");
             double time=bundle.getDouble("time");
             int count=bundle.getInt("position");
 
-            nameOfWord.setText(word.getWord());
-            partOfSpeech.setText(word.getPartOfSpeech());
-            definition.setText(word.getDefinition());
+            nameOfWord.setText(contact.getWord());
+            partOfSpeech.setText(contact.getPartOfSpeech());
+            definition.setText(contact.getDefinition());
 
             timeTaken.setText(String.format("%.6f seconds",time));
 

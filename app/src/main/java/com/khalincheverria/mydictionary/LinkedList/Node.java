@@ -1,7 +1,7 @@
 package com.khalincheverria.mydictionary.LinkedList;
 
 
-import com.khalincheverria.mydictionary.Model.Word;
+import com.khalincheverria.mydictionary.Model.Contact;
 
 import java.io.Serializable;
 
@@ -9,14 +9,14 @@ import java.io.Serializable;
     @SuppressWarnings({"WeakerAccess", "unused"})
     public class Node implements Serializable {
         private Node next;
-        private Word data;
+        private Contact data;
 
-        public Node(Word data){
+        public Node(Contact data){
             setData(data);
             setNext(null);
         }
         public Node(){
-            this(new Word());
+            this(new Contact());
         }
 
         public Node(Node node){
@@ -31,11 +31,11 @@ import java.io.Serializable;
 
         }
 
-    public Word getData() {
+    public Contact getData() {
         return data;
     }
 
-    public void setData(Word data) {
+    public void setData(Contact data) {
         this.data = data;
     }
 

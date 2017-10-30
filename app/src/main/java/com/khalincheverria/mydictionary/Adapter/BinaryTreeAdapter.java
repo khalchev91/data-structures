@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.khalincheverria.mydictionary.BinaryTree.BinaryTree;
-import com.khalincheverria.mydictionary.Model.Word;
+import com.khalincheverria.mydictionary.Model.Contact;
 import com.khalincheverria.mydictionary.R;
 import com.khalincheverria.mydictionary.ViewWord;
 
@@ -36,7 +36,7 @@ private BinaryTree wordTree;
     }
     @Override
     public void onBindViewHolder(BinaryTreeAdapter.ViewHolder viewHolder,int position){
-        final Word word=wordTree.get(position);
+        final Contact contact =wordTree.get(position);
         viewHolder.textView.setText(wordTree.get(position).getWord());
         final Context context;
         context=viewHolder.textView.getContext();
@@ -44,7 +44,7 @@ private BinaryTree wordTree;
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(v.getContext(), ViewWord.class);
-                intent.putExtra("Word",word);
+                intent.putExtra("Contact", contact);
                 context.startActivity(intent);
             }
         });

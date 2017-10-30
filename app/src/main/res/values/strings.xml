@@ -14,7 +14,7 @@
     <string name="list_button">Load Linked List</string>
     <string name="hint_search">Word</string>
     <string name="search_word">Search For Word</string>
-    <string name="word">Word:</string>
+    <string name="contact">Word:</string>
     <string name="word_hint">Enter Word Here</string>
     <string name="part_of_speech">Part Of Speech: </string>
     <string name="definition">Definition: </string>

@@ -24,7 +24,7 @@ import com.khalincheverria.mydictionary.Adapter.InvalidWordsAdapater;
 import com.khalincheverria.mydictionary.Adapter.RecyclerViewClickListener;
 import com.khalincheverria.mydictionary.BinaryTree.BinaryTree;
 import com.khalincheverria.mydictionary.LinkedList.LinkedList;
-import com.khalincheverria.mydictionary.Model.Word;
+import com.khalincheverria.mydictionary.Model.Contact;
 
 import java.util.ArrayList;
 
@@ -37,7 +37,7 @@ public class ValidateSentence extends Fragment implements RecyclerViewClickListe
     ArrayList<String> list= new ArrayList<>();
 
     LinearLayoutManager layoutManager;
-    Word newWord= new Word();
+    Contact newContact = new Contact();
     TextView numberOfWords;
     InvalidWordsAdapater invalidWordsAdapater;
     private LinkedList wordList;
@@ -110,7 +110,7 @@ public class ValidateSentence extends Fragment implements RecyclerViewClickListe
          partOfSpeech=(Spinner)addWord.findViewById(R.id.part_speech);
 
         AlertDialog dialog= new AlertDialog.Builder(this.getActivity())
-                .setTitle("Add word "+"\"" +word+"\"")
+                .setTitle("Add contact "+"\"" +word+"\"")
                 .setView(addWord)
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @SuppressLint("SetTextI18n")
@@ -120,13 +120,13 @@ public class ValidateSentence extends Fragment implements RecyclerViewClickListe
                         boolean selectPos=(partOfSpeech.getSelectedItemPosition()==0);
 
                             if(!(emptyDefinition) ||!(selectPos)) {
-                                newWord.setWord(word);
-                                newWord.setDefinition(defintion.getText().toString());
-                                newWord.setPartOfSpeech(partOfSpeech.getSelectedItem().toString());
+                                newContact.setWord(word);
+                                newContact.setDefinition(defintion.getText().toString());
+                                newContact.setPartOfSpeech(partOfSpeech.getSelectedItem().toString());
                                 if (isTree) {
-                                    binaryTree.insert(new Word(newWord));
+                                    binaryTree.insert(new Contact(newContact));
                                 } else {
-                                    wordList.addWord(new Word(newWord));
+                                    wordList.addWord(new Contact(newContact));
                                 }
                                 dialog.dismiss();
                                 list.remove(position);

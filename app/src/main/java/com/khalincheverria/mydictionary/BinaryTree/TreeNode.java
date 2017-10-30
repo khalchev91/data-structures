@@ -1,22 +1,22 @@
 package com.khalincheverria.mydictionary.BinaryTree;
 
-import com.khalincheverria.mydictionary.Model.Word;
+import com.khalincheverria.mydictionary.Model.Contact;
 
 import java.io.Serializable;
 
 public class TreeNode implements Serializable {
     private TreeNode left,right;
-    private Word word;
+    private Contact contact;
 
     public TreeNode(){
         left=null;
         right=null;
-        word=new Word();
+        contact =new Contact();
     }
-    public TreeNode(Word word){
+    public TreeNode(Contact contact){
         left=null;
         right=null;
-        this.word=word;
+        this.contact = contact;
     }
 
     public TreeNode getLeft() {
@@ -35,15 +35,15 @@ public class TreeNode implements Serializable {
         this.right = right;
     }
 
-    public Word getWord() {
-        return word;
+    public Contact getContact() {
+        return contact;
     }
 
-    public void setWord(Word word) {
-        this.word = word;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public String toString(){
-        return word.toString();
+        return contact.toString();
     }
 }

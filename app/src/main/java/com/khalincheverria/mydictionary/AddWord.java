@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.khalincheverria.mydictionary.Model.Word;
+import com.khalincheverria.mydictionary.Model.Contact;
 
 public class AddWord extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
@@ -21,13 +21,13 @@ public class AddWord extends AppCompatActivity implements View.OnClickListener, 
     private EditText definitionField;
     private Spinner partOfSpeechSpinner;
     private Button addWordButton;
-    private Word word=new Word();
+    private Contact contact =new Contact();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_word);
 
-        getSupportActionBar().setTitle("Add a New Word");
+        getSupportActionBar().setTitle("Add a New Contact");
 
         String newWord=getIntent().getStringExtra("NewWord");
 
@@ -56,11 +56,11 @@ public class AddWord extends AppCompatActivity implements View.OnClickListener, 
 @Override
     public void onClick(View view){
     if(checkInput()){
-        word.setWord(newWordField.getText().toString().toLowerCase().trim());
-        word.setDefinition(definitionField.getText().toString());
-        word.setPartOfSpeech(partOfSpeechSpinner.getSelectedItem().toString());
+        contact.setWord(newWordField.getText().toString().toLowerCase().trim());
+        contact.setDefinition(definitionField.getText().toString());
+        contact.setPartOfSpeech(partOfSpeechSpinner.getSelectedItem().toString());
         Intent returnWord= new Intent();
-        returnWord.putExtra("NewWord",word);
+        returnWord.putExtra("NewWord", contact);
         setResult(Activity.RESULT_OK,returnWord);
         finish();
     }
@@ -70,7 +70,7 @@ public class AddWord extends AppCompatActivity implements View.OnClickListener, 
 @Override
 public void onItemSelected(AdapterView<?>parent,View view,int pos,long id){
     String partOfSpeech=parent.getItemAtPosition(pos).toString();
-    word.setPartOfSpeech(partOfSpeech);
+    contact.setPartOfSpeech(partOfSpeech);
 }
 @Override
 public void onNothingSelected(AdapterView<?> parent){
@@ -79,7 +79,7 @@ public void onNothingSelected(AdapterView<?> parent){
 
 private boolean checkInput(){
     if(TextUtils.isEmpty(newWordField.getText())){
-        newWordField.setError("Please enter a word");
+        newWordField.setError("Please enter a contact");
     }
     if(TextUtils.isEmpty(definitionField.getText())){
         definitionField.setError("Please enter the definition");

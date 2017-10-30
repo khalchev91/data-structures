@@ -30,7 +30,7 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.khalincheverria.mydictionary.BinaryTree.BinaryTree;
 import com.khalincheverria.mydictionary.LinkedList.LinkedList;
-import com.khalincheverria.mydictionary.Model.Word;
+import com.khalincheverria.mydictionary.Model.Contact;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -46,7 +46,7 @@ public class Words extends AppCompatActivity
 
     public static LinkedList wordList= new LinkedList();
     public static BinaryTree binaryTree= new BinaryTree();
-    private Word word= new Word();
+    private Contact contact = new Contact();
     private  Uri uri=null;
     private String line;
     private boolean isTree;
@@ -133,13 +133,13 @@ public long start;
                                 }
                                 words[1] = words[1].replaceAll("[.]", "");
                                 Log.d("WORD", words[0]);
-                                word.setWord(words[0].trim().toLowerCase());
-                                word.setPartOfSpeech(words[1]);
-                                word.setDefinition(words[2]);
+                                contact.setContact(words[0].trim().toLowerCase());
+                                contact.setPartOfSpeech(words[1]);
+                                contact.setDefinition(words[2]);
                                 if (isTree) {
-                                    binaryTree.insert(new Word(word));
+                                    binaryTree.insert(new Contact(contact));
                                 } else {
-                                    wordList.insert(ne!w Word(word));
+                                    wordList.insert(ne!w Contact(contact));
                                 }
                             }
                             count++;
@@ -173,13 +173,13 @@ myAsyncTask.execute();
                     }
                     words[1] = words[1].replaceAll("[.]", "");
                     Log.d("WORD", words[0]);
-                    word.setWord(words[0].trim().toLowerCase());
-                    word.setPartOfSpeech(words[1]);
-                    word.setDefinition(words[2]);
+                    contact.setWord(words[0].trim().toLowerCase());
+                    contact.setPartOfSpeech(words[1]);
+                    contact.setDefinition(words[2]);
                     if (isTree) {
-                        binaryTree.insert(new Word(word));
+                        binaryTree.insert(new Contact(contact));
                     } else {
-                        wordList.insert(new Word(word));
+                        wordList.insert(new Contact(contact));
                     }
                 }
                 publishProgress(count);
@@ -192,7 +192,7 @@ myAsyncTask.execute();
         @Override
         protected void onProgressUpdate(Integer... values){
             super.onProgressUpdate(values);
-            progressDialog.setMessage("Loading word: "+String.valueOf(values[0])+"/"+linesFromFile.size());
+            progressDialog.setMessage("Loading contact: "+String.valueOf(values[0])+"/"+linesFromFile.size());
         }
         @Override
         protected void onPreExecute() {
@@ -282,16 +282,16 @@ myAsyncTask.execute();
         if(requestCode==1){
             if(resultCode== Activity.RESULT_OK){
 
-                word= (Word)data.getExtras().getSerializable("NewWord");
+                contact = (Contact)data.getExtras().getSerializable("NewWord");
                 if(isTree){
                     long start = System.nanoTime();
-                    binaryTree.insert(new Word(word));
+                    binaryTree.insert(new Contact(contact));
                     long end=System.nanoTime();
                     double duration = (double)(end - start)/1000000000;
                     Toast.makeText(Words.this, String.format("That took: %.4f seconds",duration), Toast.LENGTH_SHORT).show();
                 }else {
                     long start = System.nanoTime();
-                    wordList.addWord(new Word(word));
+                    wordList.addWord(new Contact(contact));
                     long end=System.nanoTime();
                     double duration = (double)(end - start)/1000000000;
                     Toast.makeText(Words.this, String.format("That took: %.4f seconds",duration), Toast.LENGTH_SHORT).show();

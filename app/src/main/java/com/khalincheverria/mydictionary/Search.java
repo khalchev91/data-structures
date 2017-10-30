@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.khalincheverria.mydictionary.BinaryTree.BinaryTree;
 import com.khalincheverria.mydictionary.LinkedList.LinkedList;
-import com.khalincheverria.mydictionary.Model.Word;
+import com.khalincheverria.mydictionary.Model.Contact;
 
 import layout.SearchFragment;
 
@@ -29,10 +29,10 @@ public class Search extends AppCompatActivity implements View.OnClickListener{
     private boolean isTree;
     public static BinaryTree binaryTree;
 
-    Word word;
+    Contact contact;
 
-    public void setWord(Word word) {
-        this.word = word;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public String searchWord="";
@@ -85,20 +85,20 @@ public class Search extends AppCompatActivity implements View.OnClickListener{
     if(isTree){
         long start=System.nanoTime();
         if(binaryTree.searchWord(searchWord)!=null) {
-            setWord(binaryTree.searchWord(searchWord));
+            setContact(binaryTree.searchWord(searchWord));
         }
         long end=System.nanoTime();
         double duration = (double)(end - start)/1000000000;
         Toast.makeText(Search.this, String.format("That took: %.5f seconds",duration), Toast.LENGTH_SHORT).show();
 
-            if(word!=null){
+            if(contact !=null){
                 int count=binaryTree.count;
                 SearchFragment searchFragment=new SearchFragment();
 
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 Bundle bundle= new Bundle();
                 bundle.putBoolean("Tree",true);
-                bundle.putSerializable("Words",word);
+                bundle.putSerializable("Words", contact);
                 bundle.putDouble("time",duration);
                 bundle.putInt("position",count);
                 searchFragment.setArguments(bundle);
@@ -108,7 +108,7 @@ public class Search extends AppCompatActivity implements View.OnClickListener{
 
             }else {
             AlertDialog alertDialog=new AlertDialog.Builder(this).create();
-                alertDialog.setMessage("Word " + "\""+searchWord +"\""+ " not found in the dictionary");
+                alertDialog.setMessage("Contact " + "\""+searchWord +"\""+ " not found in the dictionary");
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -119,12 +119,12 @@ public class Search extends AppCompatActivity implements View.OnClickListener{
         }
     }else {
         long start = System.nanoTime();
-        word = linkedList.retrieve(searchWord);
+        contact = linkedList.retrieve(searchWord);
         long end=System.nanoTime();
         double duration = (double)(end - start)/1000000000;
         Toast.makeText(Search.this, String.format("That took: %.5f seconds",duration), Toast.LENGTH_SHORT).show();
 
-        if (word != null) {
+        if (contact != null) {
             int count =linkedList.count;
             SearchFragment searchFragment=new SearchFragment();
 
@@ -133,7 +133,7 @@ public class Search extends AppCompatActivity implements View.OnClickListener{
             Bundle bundle= new Bundle();
 
             bundle.putBoolean("Tree",false);
-            bundle.putSerializable("Words",word);
+            bundle.putSerializable("Words", contact);
             bundle.putDouble("time",duration);
             bundle.putInt("position",count);
             searchFragment.setArguments(bundle);
@@ -143,7 +143,7 @@ public class Search extends AppCompatActivity implements View.OnClickListener{
 
         } else {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setMessage("Word " + "\""+searchWord +"\""+ " not found in the dictionary");
+            alertDialog.setMessage("Contact " + "\""+searchWord +"\""+ " not found in the dictionary");
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

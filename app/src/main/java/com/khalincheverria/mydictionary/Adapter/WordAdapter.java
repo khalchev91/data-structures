@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.khalincheverria.mydictionary.LinkedList.LinkedList;
-import com.khalincheverria.mydictionary.Model.Word;
+import com.khalincheverria.mydictionary.Model.Contact;
 
 import com.khalincheverria.mydictionary.ViewWord;
 import com.khalincheverria.mydictionary.R;
@@ -40,7 +40,7 @@ private LinkedList wordList;
     }
 @Override
     public void onBindViewHolder(WordAdapter.ViewHolder viewHolder,int position){
-    final Word word=wordList.get(position);
+    final Contact contact =wordList.get(position);
     viewHolder.textView.setText(wordList.get(position).getWord());
     final Context context;
     context=viewHolder.textView.getContext();
@@ -48,7 +48,7 @@ private LinkedList wordList;
         @Override
         public void onClick(View v) {
             Intent intent= new Intent(v.getContext(),ViewWord.class);
-            intent.putExtra("Word",word);
+            intent.putExtra("Contact", contact);
             context.startActivity(intent);
 
         }
