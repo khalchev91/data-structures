@@ -26,7 +26,7 @@ public class ViewWord extends AppCompatActivity {
         contact =(Contact)bundle.getSerializable("Contact");
 
         actionBar.setTitle(contact.getWord());
-        wordText=(TextView)findViewById(R.id.word);
+        wordText=(TextView)findViewById(R.id.contact);
         partOfSpeech=(TextView)findViewById(R.id.partOfSpeech);
         definition=(TextView)findViewById(R.id.definition);
 
